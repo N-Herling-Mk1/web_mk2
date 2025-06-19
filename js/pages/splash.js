@@ -37,7 +37,9 @@ const spheres = [
     angle: 0,
     color: 'rgba(0, 255, 170, 0.8)',
     nutationRate: 0.015,
-    nutationAngle: 0
+    nutationAngle: 0,
+    precessionRate: 0.01,
+    precessionAngle: 0,
   },
   {
     radius: 150,
@@ -46,7 +48,9 @@ const spheres = [
     angle: 0,
     color: 'rgba(0, 200, 255, 0.6)',
     nutationRate: 0.025,
-    nutationAngle: 0
+    nutationAngle: 0,
+    precessionRate: 0.02,
+    precessionAngle: 0,
   }
 ];
 
@@ -278,10 +282,12 @@ function drawSphere(time) {
     const { radius, dotCount, angle, rotationSpeed, color, nutationRate } = sphere;
 
     if (nutationEnabled) {
-      const rateBoost = 1 + nutationElapsedSec * 0.5;
+      const rateBoost = 1 + nutationElapsedSec * 0.75;
       sphere.nutationAngle += nutationRate * rateBoost;
+      sphere.precessionAngle += sphere.precessionRate * rateBoost;
       // Multiply rotationSpeed by rateBoost so rotation speeds up with nutation
       sphere.angle += rotationSpeed * rateBoost;
+      
     }
 
     const nutation = nutationEnabled
