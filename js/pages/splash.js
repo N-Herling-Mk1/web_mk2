@@ -280,6 +280,8 @@ function drawSphere(time) {
     if (nutationEnabled) {
       const rateBoost = 1 + nutationElapsedSec * 0.5;
       sphere.nutationAngle += nutationRate * rateBoost;
+      // Multiply rotationSpeed by rateBoost so rotation speeds up with nutation
+      sphere.angle += rotationSpeed * rateBoost;
     }
 
     const nutation = nutationEnabled
@@ -333,3 +335,21 @@ enterBtn.addEventListener('click', async () => {
     enterBtn.textContent = "Playing...";
   }
 });
+
+// Change button text on hover ONLY if button is NOT disabled
+enterBtn.addEventListener('mouseenter', () => {
+  if (!enterBtn.disabled) {
+    // Save original text if not saved already
+    if (!enterBtn.dataset.originalText) {
+      enterBtn.dataset.originalText = enterBtn.textContent;
+    }
+    enterBtn.textContent = '<press enter>';
+  }
+});
+
+enterBtn.addEventListener('mouseleave', () => {
+  if (!enterBtn.disabled && enterBtn.dataset.originalText) {
+    enterBtn.textContent = enterBtn.dataset.originalText;
+  }
+});
+
