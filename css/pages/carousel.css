@@ -1,0 +1,138 @@
+/* Carousel container wrapper */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;            /* Occupies 90% of viewport width */
+  max-width: 1200px;
+  margin: 40px auto;
+  user-select: none;
+  gap: 30px;              /* Space between buttons and carousel */
+}
+
+/* Carousel visible area */
+.carousel-container {
+  overflow: hidden;       /* Hide overflow for sliding effect */
+  width: 100%;
+  height: 200px;          /* Increased height */
+  outline: none;
+  background-color: black;
+  border-radius: 8px;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+/* Carousel track (flex row of tiles) */
+.carousel {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;  /* Smooth horizontal slide */
+  will-change: transform;                  /* Performance hint */
+
+  /* GPU acceleration & smoother compositing */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+
+/* Each tile */
+.page-link {
+  flex: 0 0 calc((100% - 20px) / 3);     /* Exactly 3 tiles with margin */
+  margin: 0 5px;
+  height: 90%;
+  background-color: forestgreen;         /* Non-center tile color */
+  opacity: 0.6;                           /* Non-center tile opacity */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  box-sizing: border-box;
+  color: white;                          /* Ensure text is visible on dark green */
+
+  transform: scale(0.675);               /* Side tiles smaller */
+  transition:
+    transform 0.5s ease-in-out 0.08s,    /* delayed scale */
+    opacity 0.4s ease-in-out,
+    background-color 0.3s ease,
+    font-weight 0.3s ease;
+
+  /* GPU acceleration on tiles as well */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+/* Large label inside tile */
+.page-link .large-label {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: inherit;         /* Inherit white from .page-link */
+  margin-bottom: 0.2em;
+}
+
+/* Small label inside tile */
+.page-link .small-label {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.85);  /* Slightly dimmed white */
+}
+
+/* Highlighted center tile */
+.page-link.center {
+  transform: scale(0.95);                   /* Larger center tile */
+  opacity: 1;
+  z-index: 1;                               /* Ensure above others */
+
+  /* Frosted glass effect */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Enhanced green glow effect */
+  box-shadow:
+    0 0 12px 4px rgba(0, 255, 0, 0.5),
+    0 0 24px 8px rgba(0, 255, 0, 0.35),
+    0 0 40px 12px rgba(0, 255, 0, 0.25),
+    0 0 60px 18px rgba(0, 255, 0, 0.15);
+}
+
+/* Scroll buttons */
+.carousel-toggle {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  cursor: pointer;
+  width: 30px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  margin: 0 10px;
+  border-radius: 12px;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+/* Pulse animation for center tile */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.95);
+  }
+}
+
+.page-link.center:hover {
+  animation: pulse .0s ease-in-out infinite;
+}

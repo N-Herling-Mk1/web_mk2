@@ -1,0 +1,41 @@
+/* 
+splash.css 
+.
+.CSS for the splash
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+  font-family: sans-serif;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transform-origin: center center;
+}
+
+.button-container {
+  position: relative;
+  margin-top: 400px; /* pulls button up toward sphere */
+  text-align: center;
+  z-index: 10;
+}
+
+#enterBtn {
+  padding: 16px 32px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  background-color: #00ffaa;
+  color: #000;
+  cursor: pointer;
+}
+
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page 1</title>
+  <link rel="stylesheet" href="../css/pages/landing.css" />
+</head>
+<body>
+  <h1>Welcome to Page 1</h1>
+  <button id="backBtn">Back to Carousel</button>
+
+  <script>
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.href = 'carousel.html';
+    });
+
+    console.log('Page 1 loaded');
+  </script>
+</body>
+</html>

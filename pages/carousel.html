@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Main Navigation Carousel</title>
+  <link rel="stylesheet" href="../css/pages/carousel.css" />
+  <style>
+    /* Fade in on load */
+    body {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    body.loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-page">
+    <button class="carousel-toggle left" aria-label="Scroll Left">&#9664;</button>
+
+    <div class="carousel-container" tabindex="0">
+      <div class="carousel">
+        <div class="page-link" data-page="page1.html" data-large="hey" data-small="Subtitle 1" tabindex="0" role="button" aria-label="Go to Page 1">
+    Page 1 </div>
+<div class="page-link" data-page="page2.html" data-large="Page 2" data-small="Subtitle 2" tabindex="0" role="button"
+    aria-label="Go to Page 2">
+    Page 2
+</div>
+<div class="page-link" data-page="page3.html" data-large="Page 3" data-small="Subtitle 3" tabindex="0" role="button"
+    aria-label="Go to Page 3">
+    Page 3
+</div>
+<div class="page-link" data-page="page4.html" data-large="Page 4" data-small="Subtitle 4" tabindex="0" role="button"
+    aria-label="Go to Page 4">
+    Page 4
+</div>
+<div class="page-link" data-page="page5.html" data-large="Page 5" data-small="Subtitle 5" tabindex="0" role="button"
+    aria-label="Go to Page 5">
+    Page 5
+</div>
+<div class="page-link" data-page="page6.html" data-large="Page 6" data-small="Subtitle 6" tabindex="0" role="button"
+    aria-label="Go to Page 6">
+    Page 6
+</div>
+<div class="page-link" data-page="page7.html" data-large="Page 7" data-small="Subtitle 7" tabindex="0" role="button"
+    aria-label="Go to Page 7">
+    Page 7
+</div>
+      </div>
+    </div>
+
+    <button class="carousel-toggle right" aria-label="Scroll Right">&#9654;</button>
+  </div>
+
+  <script src="../js/pages/carousel.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
+</body>
+</html>
